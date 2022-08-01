@@ -1,0 +1,2 @@
+﻿  Timber.cpp
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(2,10): fatal error C1083: 無法開啟包含檔案: 'SFML/Graphics.hpp': No such file or directory

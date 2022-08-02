@@ -72,13 +72,17 @@ int main() {
 	float cloud2Speed = 0.0f;
 	float cloud3Speed = 0.0f;
 
+	// Time Control
+	Clock clock;
+
 	while (window.isOpen()) {
 		// Player Input Handle
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
 			window.close();
 		}
 		
-		// Scene Update
+		// Time Measurement
+		Time dt = clock.restart();
 
 		// Last Frame Clear
 		window.clear();

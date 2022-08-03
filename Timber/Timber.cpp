@@ -1,5 +1,6 @@
 ﻿// SFML Libraries
 #include <SFML/Graphics.hpp>
+#include <sstream>
 // Using Namespace "sf"
 using namespace sf;
 
@@ -75,91 +76,144 @@ int main() {
 	// Time Control
 	Clock clock;
 
+	// Track Game Running
+	bool paused = true;
+
+	// Text Draw
+	int score = 0;
+	Text messageText;
+	Text scoreText;
+
+	// Font Selection
+	Font font;
+	font.loadFromFile("fonts/KOMIKAP_.ttf");
+
+	// Font Setup for Texts
+	messageText.setFont(font);
+	scoreText.setFont(font);
+
+	// Assign Messages
+	messageText.setString("Press Enter To Start!");
+	scoreText.setString("Score = 0");
+
+	// Font Size Selection
+	messageText.setCharacterSize(75);
+	scoreText.setCharacterSize(100);
+
+	// Font Color Selection
+	messageText.setFillColor(Color::White);
+	scoreText.setFillColor(Color::White);
+
+	// Text Positioning
+	// Set the Center of "messageText" to the Center of The Screen
+	FloatRect textRect = messageText.getLocalBounds();
+	messageText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	// Changing the Message Changes the Size of "messageText"
+	// The Origin Needs to be Recalculated
+	messageText.setPosition(1920 / 2.0f, 1080 / 2.0f);
+	scoreText.setPosition(20, 20);
+
 	while (window.isOpen()) {
-		// Player Input Handle
+		// Game Exit Key Command
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
 			window.close();
 		}
+
+		// Game Start Key Command
+		if (Keyboard::isKeyPressed(Keyboard::Return)) {
+			paused = false;
+		}
 		
-		// Time Measurement
-		Time deltaTime = clock.restart();
+		if (!paused) {
+			// Time Measurement
+			Time deltaTime = clock.restart();
 
-		// Bee Setup
-		if (!beeActive) {
-			// How Fast the Bee
-			srand((int)time(0));
-			beeSpeed = (rand() % 200) + 200;
+			// Bee Setup
+			if (!beeActive) {
+				// How Fast the Bee
+				srand((int)time(0));
+				beeSpeed = (rand() % 200) + 200;
 
-			// How High the Bee
-			srand((int)time(0) * 10);
-			float height = (rand() % 500) + 500;
-			spriteBee.setPosition(2000, height);
-			beeActive = true;
-		} else {
-			// Move the Bee
-			spriteBee.setPosition(spriteBee.getPosition().x - (beeSpeed * deltaTime.asSeconds()), spriteBee.getPosition().y);
-			
-			// Edge Limitation
-			if (spriteBee.getPosition().x < (-100)) {
-				// New Bee Object Waiting to Setup
-				beeActive = false;
+				// How High the Bee
+				srand((int)time(0) * 10);
+				float height = (rand() % 500) + 500;
+				spriteBee.setPosition(2000, height);
+				beeActive = true;
 			}
-		}
+			else {
+				// Move the Bee
+				spriteBee.setPosition(spriteBee.getPosition().x - (beeSpeed * deltaTime.asSeconds()), spriteBee.getPosition().y);
 
-		// Cloud Setup
-		// Cloud 1
-		if (!cloud1Active) {
-			// How Fast the Cloud
-			srand((int)time(0) * 10);
-			cloud1Speed = (rand() % 200);
-
-			// How High the Cloud
-			srand((int)time(0) * 10);
-			float height = (rand() % 150);
-			spriteCloud1.setPosition(-200, height);
-			cloud1Active = true;
-		} else {
-			// Move the Cloud
-			spriteCloud1.setPosition(spriteCloud1.getPosition().x + (cloud1Speed * deltaTime.asSeconds()), spriteCloud1.getPosition().y);
-			
-			// Edge Limitation
-			if (spriteCloud1.getPosition().x > 1920) {
-				// New Cloud Object Waiting to Setup
-				cloud1Active = false;
+				// Edge Limitation
+				if (spriteBee.getPosition().x < (-100)) {
+					// New Bee Object Waiting to Setup
+					beeActive = false;
+				}
 			}
-		}
 
-		// Cloud 2
-		if (!cloud2Active) {
-			srand((int)time(0) * 20);
-			cloud2Speed = (rand() % 200);
-			srand((int)time(0) * 20);
-			float height = (rand() % 300) - 150;
-			spriteCloud2.setPosition(-200, height);
-			cloud2Active = true;
-		} else {
-			spriteCloud2.setPosition(spriteCloud2.getPosition().x + (cloud2Speed * deltaTime.asSeconds()), spriteCloud2.getPosition().y);
+			// Cloud Setup
+			// Cloud 1
+			if (!cloud1Active) {
+				// How Fast the Cloud
+				srand((int)time(0) * 10);
+				cloud1Speed = (rand() % 200);
 
-			if (spriteCloud2.getPosition().x > 1920) {
-				cloud2Active = false;
+				// How High the Cloud
+				srand((int)time(0) * 10);
+				float height = (rand() % 150);
+				spriteCloud1.setPosition(-200, height);
+				cloud1Active = true;
 			}
-		}
+			else {
+				// Move the Cloud
+				spriteCloud1.setPosition(spriteCloud1.getPosition().x + (cloud1Speed * deltaTime.asSeconds()), spriteCloud1.getPosition().y);
 
-		// Cloud 3
-		if (!cloud3Active) {
-			srand((int)time(0) * 30);
-			cloud3Speed = (rand() % 200);
-			srand((int)time(0) * 30);
-			float height = (rand() % 450) - 150;
-			spriteCloud3.setPosition(-200, height);
-			cloud3Active = true;
-		} else {
-			spriteCloud3.setPosition(spriteCloud3.getPosition().x + (cloud3Speed * deltaTime.asSeconds()), spriteCloud3.getPosition().y);
-
-			if (spriteCloud3.getPosition().x > 1920) {
-				cloud3Active = false;
+				// Edge Limitation
+				if (spriteCloud1.getPosition().x > 1920) {
+					// New Cloud Object Waiting to Setup
+					cloud1Active = false;
+				}
 			}
-		}
+
+			// Cloud 2
+			if (!cloud2Active) {
+				srand((int)time(0) * 20);
+				cloud2Speed = (rand() % 200);
+				srand((int)time(0) * 20);
+				float height = (rand() % 300) - 150;
+				spriteCloud2.setPosition(-200, height);
+				cloud2Active = true;
+			}
+			else {
+				spriteCloud2.setPosition(spriteCloud2.getPosition().x + (cloud2Speed * deltaTime.asSeconds()), spriteCloud2.getPosition().y);
+
+				if (spriteCloud2.getPosition().x > 1920) {
+					cloud2Active = false;
+				}
+			}
+
+			// Cloud 3
+			if (!cloud3Active) {
+				srand((int)time(0) * 30);
+				cloud3Speed = (rand() % 200);
+				srand((int)time(0) * 30);
+				float height = (rand() % 450) - 150;
+				spriteCloud3.setPosition(-200, height);
+				cloud3Active = true;
+			}
+			else {
+				spriteCloud3.setPosition(spriteCloud3.getPosition().x + (cloud3Speed * deltaTime.asSeconds()), spriteCloud3.getPosition().y);
+
+				if (spriteCloud3.getPosition().x > 1920) {
+					cloud3Active = false;
+				}
+			}
+
+			// Update Score Text
+			std::stringstream ss;
+			ss << "Score = " << score;
+			scoreText.setString(ss.str());
+		} // End of Paused
 
 		// Last Frame Clear
 		window.clear();

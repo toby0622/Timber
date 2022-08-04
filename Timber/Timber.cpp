@@ -1,8 +1,17 @@
-﻿// SFML Libraries
-#include <SFML/Graphics.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include <sstream>
-// Using Namespace "sf"
 using namespace sf;
+
+void updateBranches(int seed);
+
+const int NUM_BRANCHES = 6;
+Sprite branches[NUM_BRANCHES];
+
+// Position Description for Branches and Player
+enum class side {
+	LEFT, RIGHT, NONE
+};
+side branchPositions[NUM_BRANCHES];
 
 int main() {
 	// VideoMode Object Create
@@ -124,6 +133,17 @@ int main() {
 	// The Origin Needs to be Recalculated
 	messageText.setPosition(1920 / 2.0f, 1080 / 2.0f);
 	scoreText.setPosition(20, 20);
+
+	// Branches Prepare
+	Texture textureBranch;
+	textureBranch.loadFromFile("graphics/branch.png");
+
+	// Set Texture for Branches
+	for (int i = 0; i < NUM_BRANCHES; i++) {
+		branches[i].setTexture(textureBranch);
+		branches[i].setPosition(-2000, -2000);
+		branches[i].setOrigin(220, 20);
+	}
 
 	while (window.isOpen()) {
 		// Game Exit Key Command
@@ -248,6 +268,28 @@ int main() {
 			std::stringstream ss;
 			ss << "Score = " << score;
 			scoreText.setString(ss.str());
+
+			// Update Branch Sprites
+			for (int i = 0; i < NUM_BRANCHES; i++) {
+				float height = i * 150;
+
+				if (branchPositions[i] == side::LEFT) {
+					// Move Sprite to the Left
+					branches[i].setPosition(610, height);
+
+					// Flip the Sprite Round the Other Way
+					branches->setRotation(180);
+				} else if (branchPositions[i] == side::RIGHT) {
+					// Move Sprite to the Right
+					branches[i].setPosition(1330, height);
+
+					// Set Sprite Rotation to Normal
+					branches[i].setRotation(0);
+				} else {
+					// Hide Branches
+					branches[i].setPosition(3000, height);
+				}
+			}
 		} // End of Paused
 
 		// Last Frame Clear
@@ -260,6 +302,11 @@ int main() {
 		window.draw(spriteCloud1);
 		window.draw(spriteCloud2);
 		window.draw(spriteCloud3);
+
+		// Branches Draw
+		for (int i = 0; i < NUM_BRANCHES; i++) {
+			window.draw(branches[i]);
+		}
 		
 		// Tree Object Draw
 		window.draw(spriteTree);

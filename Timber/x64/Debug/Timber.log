@@ -1,11 +1,13 @@
 ﻿  Timber.cpp
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(190,31): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(194,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(214,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(218,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(236,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(238,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(253,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(255,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(274,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(261,34): warning C4244: '+=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(286,34): warning C4244: '+=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(335,31): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(339,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(359,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(363,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(381,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(383,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(398,27): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(400,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\toby0\Documents\GitHub\Timber\Timber\Timber.cpp(419,18): warning C4244: '正在初始化': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
   Timber.vcxproj -> C:\Users\toby0\Documents\GitHub\Timber\Timber\x64\Debug\Timber.exe

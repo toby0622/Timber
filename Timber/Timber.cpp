@@ -278,7 +278,7 @@ int main() {
 					branches[i].setPosition(610, height);
 
 					// Flip the Sprite Round the Other Way
-					branches->setRotation(180);
+					branches[i].setRotation(180);
 				} else if (branchPositions[i] == side::RIGHT) {
 					// Move Sprite to the Right
 					branches[i].setPosition(1330, height);
@@ -330,4 +330,27 @@ int main() {
 	}
 
 	return 0;
+}
+
+void updateBranches(int seed) {
+	// Move All Branches Down One Place
+	for (int j = NUM_BRANCHES - 1; j > 0; j--) {
+		branchPositions[j] = branchPositions[j - 1];
+	}
+
+	// Spawn New Branch at Position '0'
+	srand((int)time(0) + seed);
+	int r = (rand() % 5);
+
+	switch (r) {
+	case 0:
+		branchPositions[0] = side::LEFT;
+		break;
+	case 1:
+		branchPositions[0] = side::RIGHT;
+		break;
+	default:
+		branchPositions[0] = side::NONE;
+		break;
+	}
 }
